@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\KelasController;
+use App\Http\Controllers\JurusanController;
+use App\Http\Controllers\KelasdetailController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +19,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::resource('mahasiswa', MahasiswaController::class);
+Route::resource('dosen', DosenController::class);
+Route::resource('kelas', KelasController::class);
+Route::resource('jurusan', JurusanController::class);
+Route::resource('kelasdetail', KelasdetailController::class);
+
